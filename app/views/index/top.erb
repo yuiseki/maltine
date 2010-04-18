@@ -1,0 +1,74 @@
+<h1 class="main_title">マルチネ～</h1>
+<div class="login_box">
+<% if current_user %>
+  <%= link_to image_tag(current_user.profile_image_url, :title => h(current_user.name), :size => "24x24"), "/#{current_user.login}" %>
+  <%=h current_user.login %>としてログイン中。  <a href="/logout">ログアウト</a>
+  <br />
+
+  <% if current_user.token %>
+    <object type="application/x-shockwave-flash" data="dewplayer.swf?mp3=/fetch/toomadtofuck.mp3&amp;bgcolor=FFFFFF" height="20" width="150"><param name="wmode" value="transparent"><param name="movie" value="dewplayer.swf?mp3=/fetch/toomadtofuck.mp3&amp;bgcolor=FFFFFF"></object>
+  <% end %>
+<% else %>
+  ログインしていません<br />
+  <a href="/session/new">
+    <img src="/images/signintw.png" title="sign in with twitter" alt="sign in with twitter"/>
+  </a>
+<% end %>
+</div>
+
+<br class="clear" />
+
+
+<div class="box">
+<h2>利用可能なマルチネID</h2>
+<% @available_tokens.each do |token| %>
+  <%=h token.token %>,
+<% end %>
+<br />
+<% form_for :token, :url => {:action => 'downloader'} do |f| %>
+  <%= f.text_field 'token', :autocomplete => 'off'  %>
+  <%= submit_tag 'ダウンロード' %>
+<% end %>
+</div>
+
+
+
+
+<div class="box">
+<h2>最近ログインしてダウンロードしたユーザー</h2>
+<% @used_tokens.each do |token| %>
+  <% user = token.user %>
+  <%= link_to image_tag(user.profile_image_url, :title => h(user.name), :size => "24x24"), "/#{user.login}" %>
+  <%= user.login %>
+<% end %>
+</div>
+
+
+<div class="box">
+<h3>最近ログインしたユーザー</h3>
+<% @recent_logins.each do |user| %>
+  <%= link_to image_tag(user.profile_image_url, :title => h(user.name), :size => "24x24"), "/#{user.login}" %>
+  <%= user.login %>
+<% end %>
+</div>
+
+
+<div class="box">
+<h3>TODO</h3>
+<ul>
+  <li><s>Twitterでログイン</s>→ログインできない場合はブラウザのcookie設定がおかしくないか確認</li>
+  <li><s>マルチネID生成</s></li>
+  <li>マルチネID重複チェック</li>
+  <li><s>マルチネIDを入力してwav, mp3をダウンロードできる</s>→とりあえず美羽アイコン</li>
+  <li>マルチネIDを無効にしたりダウンロード制限をするかしないか</li>
+  <li><s>マルチネIDとTwitterアカウントを一対一で紐付け(早い者勝ち</s>→ログイン状態でダウンロードすると勝手に紐付けします</li>
+  <li><s>紐付け済みのTwitterアカウントでログインしてるとブラウザ上でmp3を聴ける</s>→とりあえずtoomadtofuck.mp3がトップページで再生できる</li>
+  <li><s>トップページに最近購入してくれた人のTwitterアイコン表示</s></li>
+  <li>各ユーザー専用のhomeページ</li>
+  <li>各ユーザーの公開用情報ページ</li>
+  <li>各曲のページ</li>
+  <li>ブラウザ上での曲再生の作り込み（HTML5対応とか）</li>
+  <li>Twitterにマルチネ購入なう！とAmazonとかのURLつきでつぶやける</li>
+  <li></li>
+</ul>
+</div>

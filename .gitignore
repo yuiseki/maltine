@@ -3,3 +3,4 @@ ca_twitter
 *.sqlite3
 schema.rb
 unpublic/*
+log/*
