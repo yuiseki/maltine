@@ -1,6 +1,7 @@
 class Token < ActiveRecord::Base
   belongs_to :user
 
+  # 重複をチェックするためのメソッド
 
   def self.create_tokens(num)
     # num個のtokenを作り出す

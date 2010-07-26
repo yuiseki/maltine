@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>マルチネ～</title>
+  <title>MP3 killed the cd star?</title>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
   <style type="text/css">
     body  {
@@ -15,31 +15,67 @@
     h1.main_title { float:left; }
     .login_box { float:right; }
     br.clear { clear:both; }
+
+    body{background-color:#ff00ac;}
     div.content {width:1000px;margin:auto;}
+    div#input {background-color:#ff00ac;}
+    img.center {display:block;margin:70px auto;}
+
     div.box {border:solid 1px black; padding:10px; margin:10px;
       -moz-border-radius: 10px;
       -khtml-border-radius: 10px;
       -webkit-border-radius: 10px;
       border-radius: 10px;
     }
+    div.down-select {
+      width:700px;
+      margin:70px auto;
+    }
+    div.down-box{
+      width:300px;
+      float:left;
+      padding: 0px 20px ;
+    }
     a {text-decoration: none; color: #4169e1;}
-    input {font-size:18px; padding:4px;
+    /*
+    input{
       -moz-border-radius: 5px;
       -khtml-border-radius: 5px;
       -webkit-border-radius: 5px;
       border-radius: 5px;
+    }*/
+    input#token_token {
+      display:block;
+      padding:20px;
+      margin:auto;
+      font-size:5em;
+      width:720px;
+      height:116px;
+      color:white;
+      background-image:url(/DL_page_png/mal04.png);
     }
+
+    input#submit {
+      display:block;
+      margin:10px auto;
+      width:194px;
+      height:25px;
+      background-image:url(/DL_page_png/mal05.png);
+    }
+
+
+
   </style>
 </head>
 <body>
 
-<div class="content">
 
+<div class="content">
 
 <%= yield %>
 
-
 </div>
+
 
 </body>
 </html>

@@ -1,0 +1,74 @@
+
+
+
+<div id="input">
+  <img class="center" src="/DL_page_png/mal01.png" />
+  <img class="center" src="/DL_page_png/mal02.png" />
+  <img class="center" src="/DL_page_png/mal03.png" />
+
+<% form_for :token, :url => {:action => 'downloader'} do |f| %>
+  <%= f.text_field 'token'  %>
+  <br /><input name="commit" type="submit" id="submit" value="" />
+<% end %>
+</div>
+
+
+
+
+<% if false %>
+<% (1..9).each do |ma| %>
+  <img src="/DL_page_png/mal0<%= ma %>.png" />
+<% end %>
+  <img src="/DL_page_png/mal10.png" />
+
+
+<h1 class="main_title">マルチネ～</h1>
+<div class="login_box">
+<% if current_user %>
+  <%= link_to image_tag(current_user.profile_image_url, :title => h(current_user.name), :size => "24x24"), "/#{current_user.login}" %>
+  <%=h current_user.login %>としてログイン中。  <a href="/logout">ログアウト</a>
+  <br />
+
+  <% if current_user.token %>
+    <object type="application/x-shockwave-flash" data="dewplayer.swf?mp3=/fetch/toomadtofuck.mp3&amp;bgcolor=FFFFFF" height="20" width="150"><param name="wmode" value="transparent"><param name="movie" value="dewplayer.swf?mp3=/fetch/toomadtofuck.mp3&amp;bgcolor=FFFFFF"></object>
+  <% end %>
+<% else %>
+  ログインしていません<br />
+  <a href="/session/new">
+    <img src="/images/signintw.png" title="sign in with twitter" alt="sign in with twitter"/>
+  </a>
+<% end %>
+</div>
+<br class="clear" />
+
+
+
+
+
+<div class="box">
+<h2>最近ログインしてダウンロードしたユーザー</h2>
+<% @used_tokens.each do |token| %>
+  <% user = token.user %>
+  <%= link_to image_tag(user.profile_image_url, :title => h(user.name), :size => "24x24"), "/#{user.login}" %>
+  <%= user.login %>
+<% end %>
+</div>
+
+
+<div class="box">
+<h3>最近ログインしたユーザー</h3>
+<% @recent_logins.each do |user| %>
+  <%= link_to image_tag(user.profile_image_url, :title => h(user.name), :size => "24x24"), "/#{user.login}" %>
+  <%= user.login %>
+<% end %>
+</div>
+<% end %>
+
+
+
+
+
+
+
+
+
